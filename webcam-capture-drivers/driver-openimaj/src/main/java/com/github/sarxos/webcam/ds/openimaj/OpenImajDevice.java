@@ -99,14 +99,16 @@ public class OpenImajDevice implements WebcamDevice {
 		// images at the very capture beginning, if you have some other idea of
 		// how to remove them, please share or fix
 
-		int i = 0;
-		do {
-			capture.getNextFrame();
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-			}
-		} while (i++ < 3);
+//		int i = 0;
+//		do {
+//			capture.getNextFrame();
+//			try {
+//				Thread.sleep(1000);
+//			} catch (InterruptedException e) {
+//			}
+//		} while (i++ < 3);
+		
+		System.out.println("AD HOC DRIVER IN USE");
 
 		LOG.info("OpenIMAJ webcam device has been initialized");
 	}
