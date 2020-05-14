@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 
 import org.openimaj.image.ImageUtilities;
+import org.openimaj.image.MBFImage;
 import org.openimaj.video.capture.Device;
 import org.openimaj.video.capture.VideoCapture;
 import org.openimaj.video.capture.VideoCaptureException;
@@ -71,7 +72,7 @@ public class OpenImajDevice implements WebcamDevice {
 		if (!open) {
 			throw new RuntimeException("Cannot get image from closed device");
 		}
-
+		
 		// TODO scale to dimension if not equal
 		return ImageUtilities.createBufferedImageForDisplay(capture.getNextFrame());
 	}
@@ -89,28 +90,15 @@ public class OpenImajDevice implements WebcamDevice {
 		}
 
 		try {
-			capture = new VideoCapture(size.width, size.height, device);
+			//capture = new VideoCapture(size.width, size.height, device);
+			capture = new VideoCapture(size.width, size.height, 30, device);
+			//capture.setFPS(50);
 		} catch (VideoCaptureException e) {
 			throw new WebcamException("Cannot initialize video capture", e);
 		}
 		open = true;
 
-		// what the hell is that something below? that's ugly w/a for black
-		// images at the very capture beginning, if you have some other idea of
-		// how to remove them, please share or fix
-
-//		int i = 0;
-//		do {
-//			capture.getNextFrame();
-//			try {
-//				Thread.sleep(1000);
-//			} catch (InterruptedException e) {
-//			}
-//		} while (i++ < 3);
-		
-		System.out.println("AD HOC DRIVER IN USE");
-
-		LOG.info("OpenIMAJ webcam device has been initialized");
+		LOG.info("OpenIMAJ webcam device has been initialized AD HOC DRIVER IN USE");
 	}
 
 	@Override

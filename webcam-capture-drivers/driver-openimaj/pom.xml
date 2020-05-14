@@ -3,11 +3,14 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
+  <!-- parent>
     <groupId>com.github.sarxos</groupId>
     <artifactId>webcam-capture-drivers</artifactId>
     <version>0.3.13-SNAPSHOT</version>
-  </parent>
+  </parent-->
+
+  <groupId>com.github.sarxos</groupId>
+  <version>0.3.12</version>
 
   <artifactId>webcam-capture-driver-openimaj</artifactId>
   <packaging>jar</packaging>
